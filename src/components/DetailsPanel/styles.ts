@@ -1,8 +1,12 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
 
-export const Aside = styled.div`
-  display: none;
+type AsideProps = {
+  $toggle: boolean
+}
+
+export const Aside = styled.div<AsideProps>`
+  display: ${(props) => (props.$toggle ? 'block' : 'none')};
   position: relative;
   max-width: 420px;
   width: 100%;

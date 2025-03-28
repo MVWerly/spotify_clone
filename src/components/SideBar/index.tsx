@@ -1,19 +1,36 @@
-import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 import CardLibrary from '../CardLibrary'
+
+import { RootReducer } from '../../store'
+import { toggle } from '../../store/reducers/menu'
+
 import * as S from './styles'
 
 const SideBar = () => {
-  const [toggleMenu, setToggleMenu] = useState(true)
+  const { menus } = useSelector((state: RootReducer) => state.menu)
+  const dispatch = useDispatch()
+
+  const menu1 = menus.menu1
+
+  const toggleMenu = (id: string) => {
+    dispatch(toggle(id))
+  }
 
   return (
-    <S.Aside $toggle={toggleMenu}>
-      <S.Row $toggle={toggleMenu}>
-        <S.Title onClick={() => setToggleMenu(!toggleMenu)}>
-          <i className="bi bi-collection-play"></i>
-          {toggleMenu && <h3>A tua Biblioteca</h3>}
+    <S.Aside $toggle={menu1}>
+      <S.Row $toggle={menu1}>
+        <S.Title>
+          <button
+            id="menu1"
+            onClick={({ currentTarget }) => toggleMenu(currentTarget.id)}
+          >
+            <i className="bi bi-collection-play"></i>
+            {menu1 && <h3>A tua Biblioteca</h3>}
+          </button>
         </S.Title>
         <S.ButtonContainer>
-          {toggleMenu && (
+          {menu1 && (
             <>
               <button>
                 <i className="bi bi-plus-lg"></i> Criar
@@ -26,42 +43,42 @@ const SideBar = () => {
         </S.ButtonContainer>
       </S.Row>
       <S.Row
-        $overflow={toggleMenu}
-        $toggle={toggleMenu}
+        $overflow={menu1}
+        $toggle={menu1}
         $isFlex
-        $marginTop="20px"
-        $sidePadding={toggleMenu ? '0 10px' : '0 5px'}
+        $marginTop={menu1 ? '20px' : '10px'}
+        $sidePadding={menu1 ? '0 10px' : '0 5px'}
       >
-        <S.Row $toggle={toggleMenu}>
-          {toggleMenu ? (
+        <S.SearchContainer $toggle={menu1}>
+          {menu1 ? (
             <>
-              <S.SearchContainer>
+              <S.Search>
                 <i className="bi bi-search"></i>
-              </S.SearchContainer>
-              <S.SearchContainer>
+              </S.Search>
+              <S.Search>
                 <button>
                   Recentes <i className="bi bi-list"></i>
                 </button>
-              </S.SearchContainer>
+              </S.Search>
             </>
           ) : (
             <>
-              <S.SearchContainer>
+              <S.Search>
                 <i className="bi bi-plus-lg"></i>
-              </S.SearchContainer>
+              </S.Search>
             </>
           )}
-        </S.Row>
-        <CardLibrary toogle={toggleMenu} />
-        <CardLibrary toogle={toggleMenu} />
-        <CardLibrary toogle={toggleMenu} />
-        <CardLibrary toogle={toggleMenu} />
-        <CardLibrary toogle={toggleMenu} />
-        <CardLibrary toogle={toggleMenu} />
-        <CardLibrary toogle={toggleMenu} />
-        <CardLibrary toogle={toggleMenu} />
-        <CardLibrary toogle={toggleMenu} />
-        <CardLibrary toogle={toggleMenu} />
+        </S.SearchContainer>
+        <CardLibrary toogle={menu1} />
+        <CardLibrary toogle={menu1} />
+        <CardLibrary toogle={menu1} />
+        <CardLibrary toogle={menu1} />
+        <CardLibrary toogle={menu1} />
+        <CardLibrary toogle={menu1} />
+        <CardLibrary toogle={menu1} />
+        <CardLibrary toogle={menu1} />
+        <CardLibrary toogle={menu1} />
+        <CardLibrary toogle={menu1} />
       </S.Row>
     </S.Aside>
   )

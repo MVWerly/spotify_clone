@@ -5,7 +5,7 @@ type RowProps = {
   $marginTop?: string
   $sidePadding?: string
   $isFlex?: boolean
-  $toggle: true | false
+  $toggle: boolean
   $overflow?: boolean
 }
 
@@ -28,7 +28,7 @@ export const Row = styled.div<RowProps>`
   padding: ${(props) => (props.$sidePadding ? props.$sidePadding : '0 20px')};
   margin-top: ${(props) => props.$marginTop};
   display: ${(porps) => (porps.$isFlex ? 'block' : 'flex')};
-  justify-content: space-between;
+  justify-content: ${(props) => (props.$toggle ? 'space-between' : 'center')};
 
   overflow-x: hidden;
   overflow-y: ${(props) => (props.$overflow ? 'auto' : 'hidden')};
@@ -59,23 +59,32 @@ export const Row = styled.div<RowProps>`
 `
 
 export const Title = styled.div`
-  cursor: pointer;
-  display: flex;
-  align-items: center;
   transition: all 0.3s ease-in-out;
-  margin-left: 6px;
 
-  &:hover {
-    color: ${colors.textBase};
-  }
+  button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: ${colors.textSubdued};
 
-  i {
-    font-size: 24px;
-  }
+    &:hover {
+      color: ${colors.textBase};
+      i {
+        color: ${colors.textBase};
+      }
+    }
 
-  h3 {
-    font-size: 16px;
-    margin-left: 15px;
+    i {
+      font-size: 24px;
+      color: ${colors.textSubdued};
+    }
+
+    h3 {
+      font-size: 16px;
+      margin-left: 15px;
+    }
   }
 `
 
@@ -127,7 +136,13 @@ export const ButtonContainer = styled.div`
   }
 `
 
-export const SearchContainer = styled.div`
+export const SearchContainer = styled.div<AsideProps>`
+  display: flex;
+  align-items: center;
+  justify-content: ${(props) => (props.$toggle ? 'space-between' : 'center')};
+`
+
+export const Search = styled.div`
   margin: 20px 0;
 
   > i {
@@ -147,7 +162,6 @@ export const SearchContainer = styled.div`
   }
 
   button {
-    margin-right: 10px;
     display: flex;
     align-items: center;
     justify-content: center;

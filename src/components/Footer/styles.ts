@@ -27,16 +27,23 @@ export const CardMusic = styled.div`
       border-radius: 6px;
     }
 
-    i {
+    button {
       position: absolute;
+      border: none;
+      background-color: transparent;
       top: -6px;
       right: 0;
-      color: ${colors.backgroundElevatedHighlight};
-      font-size: 32px;
-      opacity: 0;
 
       &:hover {
-        color: ${colors.backgroundElevatedBase};
+        i {
+          color: ${colors.backgroundElevatedBase};
+        }
+      }
+
+      i {
+        color: ${colors.backgroundElevatedHighlight};
+        font-size: 32px;
+        opacity: 0;
       }
     }
   }
