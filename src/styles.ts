@@ -7,7 +7,11 @@ export const colors = {
   backgroundElevatedHighlight: '#2a2a2a',
   textBase: '#fff',
   textSubdued: '#b3b3b3',
-  profileColor: '#006400'
+  profileColor: '#006400',
+  backgroundTintedBase: 'hsla(0, 0%, 100%, .1)',
+  backgroundTintedBaseHighlight: 'hsla(0, 0%, 100%, .14)',
+  scrollBase: 'hsla(0, 0%, 100%, .3)',
+  scrollHighlight: 'hsla(0, 0%, 100%, .5)'
 }
 
 export const GlobalStyles = createGlobalStyle`
@@ -18,8 +22,13 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
+    max-width: 100vw;
+    width: 100vw;
+    height: 100vh;
     background-color: ${colors.black};
     color: ${colors.textSubdued};
     font-family: sans-serif;
+    overflow-x: hidden;
+    overflow-y: hidden;
   }
 `

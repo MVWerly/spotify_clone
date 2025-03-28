@@ -1,16 +1,23 @@
+import { Provider } from 'react-redux'
+
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 import Header from './components/Header'
+import LayoutWrapper from './components/LayoutWrapper'
+import Footer from './components/Footer'
+
+import { store } from './store'
+
 import { GlobalStyles } from './styles'
-import MainContent from './components/MainContent'
 
 function App() {
   return (
-    <>
+    <Provider store={store}>
       <GlobalStyles />
       <Header />
-      <MainContent />
-    </>
+      <LayoutWrapper />
+      <Footer />
+    </Provider>
   )
 }
 

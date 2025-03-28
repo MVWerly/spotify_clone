@@ -1,11 +1,16 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
 
-export const Card = styled.div`
+type CardProps = {
+  $toogle?: boolean
+}
+
+export const Card = styled.div<CardProps>`
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 8px;
+  justify-content: ${(props) => (props.$toogle ? 'flex-start' : 'center')};
+  padding: 5px;
   border-radius: 10px;
   margin-bottom: 10px;
 
@@ -20,7 +25,6 @@ export const Card = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 6px;
-    margin-right: 16px;
     background: rgb(28, 25, 68);
     background: linear-gradient(
       94deg,
@@ -35,9 +39,10 @@ export const Card = styled.div`
   }
 
   div:nth-of-type(2) {
+    margin-left: 16px;
     h3 {
-      font-size: 16px;
-      margin-bottom: 8px;
+      font-size: 14px;
+      margin-bottom: 4px;
       color: ${colors.textBase};
     }
 

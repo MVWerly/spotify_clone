@@ -5,21 +5,57 @@ type RowProps = {
   $marginTop?: string
   $sidePadding?: string
   $isFlex?: boolean
+  $toggle: true | false
+  $overflow?: boolean
 }
 
-export const Aside = styled.aside`
+type AsideProps = {
+  $toggle: true | false
+}
+
+export const Aside = styled.aside<AsideProps>`
   padding: 20px 0;
-  width: 100%;
-  height: 100vh;
+  max-width: 420px;
+  width: ${(props) => (props.$toggle ? '420px' : '72px')};
+  height: 592px;
   background-color: ${colors.backgroundBase};
   border-radius: 10px;
 `
 
 export const Row = styled.div<RowProps>`
+  max-height: 520px;
+  width: ${(props) => (props.$toggle ? '420px' : '72px')};
   padding: ${(props) => (props.$sidePadding ? props.$sidePadding : '0 20px')};
   margin-top: ${(props) => props.$marginTop};
   display: ${(porps) => (porps.$isFlex ? 'block' : 'flex')};
   justify-content: space-between;
+
+  overflow-x: hidden;
+  overflow-y: ${(props) => (props.$overflow ? 'auto' : 'hidden')};
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background: ${colors.scrollBase};
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: ${colors.scrollHighlight};
+    }
+  }
 `
 
 export const Title = styled.div`
@@ -27,7 +63,7 @@ export const Title = styled.div`
   display: flex;
   align-items: center;
   transition: all 0.3s ease-in-out;
-  margin-left: 10px;
+  margin-left: 6px;
 
   &:hover {
     color: ${colors.textBase};
@@ -92,6 +128,8 @@ export const ButtonContainer = styled.div`
 `
 
 export const SearchContainer = styled.div`
+  margin: 20px 0;
+
   > i {
     padding: 8px;
     border-radius: 50%;
