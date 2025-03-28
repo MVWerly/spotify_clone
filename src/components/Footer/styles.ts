@@ -15,6 +15,12 @@ export const CardMusic = styled.div`
   div:nth-of-type(1) {
     position: relative;
 
+    &:hover {
+      i {
+        opacity: 1;
+      }
+    }
+
     img {
       width: 56px;
       height: 56px;
@@ -23,13 +29,14 @@ export const CardMusic = styled.div`
 
     i {
       position: absolute;
-      top: 0;
+      top: -6px;
       right: 0;
-      color: ${colors.backgroundElevatedBase};
+      color: ${colors.backgroundElevatedHighlight};
       font-size: 32px;
+      opacity: 0;
 
       &:hover {
-        color: ${colors.backgroundElevatedHighlight};
+        color: ${colors.backgroundElevatedBase};
       }
     }
   }
