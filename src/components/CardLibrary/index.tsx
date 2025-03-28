@@ -2,10 +2,9 @@ import * as S from './styles'
 
 type Props = {
   toogle: boolean
-  typeFooter?: boolean
 }
 
-const CardLibrary = ({ toogle, typeFooter }: Props) => (
+const CardLibrary = ({ toogle }: Props) => (
   <S.Card $toogle={toogle}>
     <div>
       <i className="bi bi-heart-fill"></i>
@@ -20,7 +19,6 @@ const CardLibrary = ({ toogle, typeFooter }: Props) => (
         </div>
       </>
     )}
-    {typeFooter && <i className="bi bi-plus-circle"></i>}
   </S.Card>
 )
 
