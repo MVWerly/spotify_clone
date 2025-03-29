@@ -3,15 +3,23 @@ import { useDispatch, useSelector } from 'react-redux'
 import PlayerControl from '../PlayerControl'
 import ProgressBar from '../ProgressBar'
 
-import * as S from './styles'
 import { toggle } from '../../store/reducers/menu'
 import { RootReducer } from '../../store'
-import { useGetTopTracksQuery } from '../../services/api'
+
+import * as S from './styles'
+import { useGetArtistQuery } from '../../services/spotifyApi'
+import { useEffect } from 'react'
 
 const Footer = () => {
+  const { data } = useGetArtistQuery('0TnOYISbd1XYRBk9myaseg')
   const { menus } = useSelector((state: RootReducer) => state.menu)
-  const { data } = useGetTopTracksQuery()
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (data) {
+      console.log(data)
+    }
+  }, [data])
 
   const menu2 = menus.menu2
 
@@ -19,7 +27,6 @@ const Footer = () => {
     dispatch(toggle(id))
   }
 
-  console.log(data)
   return (
     <S.FooterContainer>
       <S.CardMusic>

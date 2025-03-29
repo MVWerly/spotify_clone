@@ -14,7 +14,7 @@ const Section = ({ title, typeCard }: Props) => {
   const [showLeftButton, setShowLeftButton] = useState<boolean>()
   const [showRighttButton, setShowRighttButton] = useState<boolean>()
 
-  const handleScroll = (direction: any) => {
+  const handleScroll = (direction: string) => {
     if (scrollContainerRef.current) {
       const scrollAmount = 400
       scrollContainerRef.current.scrollBy({
