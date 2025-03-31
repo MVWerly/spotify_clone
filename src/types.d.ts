@@ -1,12 +1,30 @@
+declare type CategoryIcon = {
+  url: string
+}
+
+declare type CategoryItem = {
+  icons: CategoryIcon[]
+  name: string
+}
+
+declare type CategoriesResponse = {
+  categories: {
+    items: CategoryItem[]
+  }
+}
+
+declare type ArtistImage = {
+  url: string
+}
+
 declare type Artist = {
   name: string
+  images: ArtistImage[]
+  followers: {
+    total: number
+  }
 }
 
-declare type Track = {
-  name: string
+declare type ArtistsReponse = {
   artists: Artist[]
-}
-
-declare type TrackResponse = {
-  items: Track[]
 }

@@ -7,19 +7,10 @@ import { toggle } from '../../store/reducers/menu'
 import { RootReducer } from '../../store'
 
 import * as S from './styles'
-import { useGetArtistQuery } from '../../services/spotifyApi'
-import { useEffect } from 'react'
 
 const Footer = () => {
-  const { data } = useGetArtistQuery('0TnOYISbd1XYRBk9myaseg')
   const { menus } = useSelector((state: RootReducer) => state.menu)
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    if (data) {
-      console.log(data)
-    }
-  }, [data])
 
   const menu2 = menus.menu2
 

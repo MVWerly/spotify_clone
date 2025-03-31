@@ -34,14 +34,19 @@ const spotifyApi = createApi({
     }
   }),
   endpoints: (builder) => ({
-    getArtist: builder.query({
-      query: (id: string) => ({
-        url: `/artists/${id}`
+    getCategory: builder.query<CategoriesResponse, void>({
+      query: () => ({
+        url: '/browse/categories?locale=pt_BR&limit=15&offset=5'
+      })
+    }),
+    getArtist: builder.query<ArtistsReponse, void>({
+      query: () => ({
+        url: '/artists?ids=2CIMQHirSU0MQqyYHq0eOx%2C57dN52uHvrHOxijzpIgu3E%2C1vCWHaC5f2uS3yhpwWbIA6'
       })
     })
   })
 })
 
-export const { useGetArtistQuery } = spotifyApi
+export const { useGetCategoryQuery, useGetArtistQuery } = spotifyApi
 
 export default spotifyApi

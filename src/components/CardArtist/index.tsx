@@ -2,14 +2,17 @@ import * as S from './styles'
 
 type Props = {
   typeCard?: 'artist'
+  title: string
+  subtitle?: string | number
+  image: string
 }
 
-const CardArtist = ({ typeCard }: Props) => (
+const CardArtist = ({ typeCard, title, subtitle, image }: Props) => (
   <S.Card $typeCard={typeCard}>
-    <img src="https://placehold.co/176x176" />
+    <img src={image} />
     <div>
-      <h3>Album</h3>
-      <span>Artista</span>
+      <h3>{title}</h3>
+      <span>{typeCard === 'artist' ? subtitle + ` seguidores` : subtitle}</span>
       <button>
         <i className="bi bi-play-circle-fill"></i>
       </button>

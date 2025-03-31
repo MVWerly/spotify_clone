@@ -7,9 +7,11 @@ import * as S from './styles'
 type Props = {
   title: string
   typeCard?: 'artist'
+  categories?: CategoryItem[]
+  artists?: Artist[]
 }
 
-const Section = ({ title, typeCard }: Props) => {
+const Section = ({ title, typeCard, categories, artists }: Props) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [showLeftButton, setShowLeftButton] = useState<boolean>()
   const [showRighttButton, setShowRighttButton] = useState<boolean>()
@@ -48,6 +50,10 @@ const Section = ({ title, typeCard }: Props) => {
     }
   }, [])
 
+  if (!categories && !artists) {
+    return <h3>Carregado...</h3>
+  }
+
   return (
     <S.SectionContainer>
       <S.SectionTitle>
@@ -66,15 +72,24 @@ const Section = ({ title, typeCard }: Props) => {
           </S.ButtonRight>
         )}
         <S.CardContainer ref={scrollContainerRef}>
-          <CardArtist typeCard={typeCard} />
-          <CardArtist typeCard={typeCard} />
-          <CardArtist typeCard={typeCard} />
-          <CardArtist typeCard={typeCard} />
-          <CardArtist typeCard={typeCard} />
-          <CardArtist typeCard={typeCard} />
-          <CardArtist typeCard={typeCard} />
-          <CardArtist typeCard={typeCard} />
-          <CardArtist typeCard={typeCard} />
+          {categories &&
+            categories.map((category, index) => (
+              <CardArtist
+                title={category.name}
+                image={category.icons[0].url}
+                key={index}
+              />
+            ))}
+          {artists &&
+            artists.map((artist, index) => (
+              <CardArtist
+                typeCard="artist"
+                key={index}
+                image={artist.images[0].url}
+                title={artist.name}
+                subtitle={artist.followers.total}
+              />
+            ))}
         </S.CardContainer>
       </div>
     </S.SectionContainer>

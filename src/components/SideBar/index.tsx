@@ -71,14 +71,6 @@ const SideBar = () => {
         </S.SearchContainer>
         <CardLibrary toogle={menu1} />
         <CardLibrary toogle={menu1} />
-        <CardLibrary toogle={menu1} />
-        <CardLibrary toogle={menu1} />
-        <CardLibrary toogle={menu1} />
-        <CardLibrary toogle={menu1} />
-        <CardLibrary toogle={menu1} />
-        <CardLibrary toogle={menu1} />
-        <CardLibrary toogle={menu1} />
-        <CardLibrary toogle={menu1} />
       </S.Row>
     </S.Aside>
   )
