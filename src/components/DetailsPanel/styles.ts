@@ -10,7 +10,7 @@ export const Aside = styled.div<AsideProps>`
   position: relative;
   max-width: 420px;
   width: 100%;
-  height: 592px;
+  height: 80vh;
   background-color: ${colors.backgroundBase};
   padding-left: 16px;
   padding-bottom: 16px;

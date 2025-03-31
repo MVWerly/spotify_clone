@@ -7,7 +7,7 @@ export const Main = styled.main`
   overflow-y: auto;
   width: 100%;
   border-radius: 10px;
-  height: 592px;
+  height: 80vh;
   background: rgb(31, 31, 31);
   background: linear-gradient(
     180deg,

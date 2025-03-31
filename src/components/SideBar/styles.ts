@@ -17,7 +17,7 @@ export const Aside = styled.aside<AsideProps>`
   padding: 20px 0;
   max-width: 420px;
   width: ${(props) => (props.$toggle ? '420px' : '72px')};
-  height: 592px;
+  height: 80vh;
   background-color: ${colors.backgroundBase};
   border-radius: 10px;
 `
